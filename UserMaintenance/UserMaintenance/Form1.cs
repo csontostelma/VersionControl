@@ -52,7 +52,7 @@ namespace UserMaintenance
                     {
                         sw.Write(u.ID);
                         sw.Write(';');
-                        sw.WriteLine(u.FullName);
+                        sw.Write(u.FullName);
                     }
                 }
             }
