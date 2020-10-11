@@ -80,13 +80,13 @@ namespace _5.gyak
                 using (StreamWriter sw = new StreamWriter(sf.FileName, false, Encoding.UTF8))
                 {
                     sw.Write("Időszak");
-                    sw.Write(',');
+                    sw.Write(';');
                     sw.WriteLine("Nyereség");
 
                     foreach (Tick t in Ticks)
                     {
                         sw.Write(t.Tick_id);
-                        sw.Write(',');
+                        sw.Write(';');
                         sw.WriteLine(t.Price);
                     }
                 }
