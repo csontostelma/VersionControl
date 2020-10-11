@@ -10,6 +10,6 @@ namespace _5.gyak.Entities
     public class PortfolioItem
     {
         public string Index { get; set; }
-        public string Volume { get; set; }
+        public decimal Volume { get; set; }
     }
 }
