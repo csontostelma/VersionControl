@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +69,28 @@ namespace _5.gyak
                 value += (decimal)last.Price * item.Volume;
             }
             return value;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sf = new SaveFileDialog();
+            sf.ShowDialog();
+            if (sf.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter sw = new StreamWriter(sf.FileName, false, Encoding.UTF8))
+                {
+                    sw.Write("Időszak");
+                    sw.Write(',');
+                    sw.WriteLine("Nyereség");
+
+                    foreach (Tick t in Ticks)
+                    {
+                        sw.Write(t.Tick_id);
+                        sw.Write(',');
+                        sw.WriteLine(t.Price);
+                    }
+                }
+            }
         }
     }
 
