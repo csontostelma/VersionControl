@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 using Webszolgáltatás.Entities;
 using Webszolgáltatás.MnbServiceReference;
@@ -15,7 +16,7 @@ namespace Webszolgáltatás
 {
     public partial class Form1 : Form
     {
-        BindingList<RateDate> Rates;
+        BindingList<RateDate> Rates=new BindingList<RateDate>();
 
         public Form1()
         {
@@ -65,6 +66,21 @@ namespace Webszolgáltatás
                 }
 
 
+                chartRateDate.DataSource = Rates;
+
+                var series = chartRateDate.Series[0];
+                series.ChartType = SeriesChartType.Line;
+                series.XValueMember = "Date";
+                series.YValueMembers = "Value";
+                series.BorderWidth = 2;
+
+                var legend = chartRateDate.Legends[0];
+                legend.Enabled = false;
+
+                var chartArea = chartRateDate.ChartAreas[0];
+                chartArea.AxisX.MajorGrid.Enabled = false;
+                chartArea.AxisY.MajorGrid.Enabled = false;
+                chartArea.AxisY.IsStartedFromZero = false;
 
 
             }
