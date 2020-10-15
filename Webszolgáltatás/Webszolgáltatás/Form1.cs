@@ -24,7 +24,7 @@ namespace Webszolgáltatás
         {
             var mnbService = new MNBArfolyamServiceSoapClient();
 
-            var request = new GetExchangeRatesRequestBody();
+            var request = new GetExchangeRatesRequestBody()
             {
                 currencyNames = "EUR",
                 startDate= "2020-01-01",
