@@ -17,10 +17,18 @@ namespace Webszolgáltatás
     public partial class Form1 : Form
     {
         BindingList<RateDate> Rates=new BindingList<RateDate>();
+        BindingList<string> Currencies = new BindingList<string>();
+
 
         public Form1()
         {
             InitializeComponent();
+
+            GetCurrencies();
+
+            RefreshData();
+
+            comboBox1.DataSource = Currencies;
 
         }
 
