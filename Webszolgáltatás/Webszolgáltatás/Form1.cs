@@ -7,17 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Webszolgáltatás.Entities;
 using Webszolgáltatás.MnbServiceReference;
 
 namespace Webszolgáltatás
 {
     public partial class Form1 : Form
     {
+        BindingList<RateDate> rates;
+
         public Form1()
         {
             InitializeComponent();
 
             GetExchangeRates();
+
+            dataGridView1.DataSource = rates;
         }
 
         private void GetExchangeRates()
