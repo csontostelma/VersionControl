@@ -15,7 +15,7 @@ namespace Webszolgáltatás
 {
     public partial class Form1 : Form
     {
-        BindingList<RateDate> rates;
+        BindingList<RateDate> Rates;
 
         public Form1()
         {
@@ -23,7 +23,7 @@ namespace Webszolgáltatás
 
             GetExchangeRates();
 
-            dataGridView1.DataSource = rates;
+            dataGridView1.DataSource = Rates;
         }
 
         private void GetExchangeRates()
@@ -41,6 +41,7 @@ namespace Webszolgáltatás
             var response = mnbService.GetExchangeRates(request);
 
             var result = response.GetExchangeRatesResult;
+
 
 
             var xml = new XmlDocument();
@@ -62,6 +63,9 @@ namespace Webszolgáltatás
                 {
                     rate.Value = value / unit;
                 }
+
+
+
 
             }
         }
