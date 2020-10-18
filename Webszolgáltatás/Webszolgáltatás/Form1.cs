@@ -24,7 +24,6 @@ namespace Webszolgáltatás
         {
             InitializeComponent();
 
-            GetCurrencies();
 
             RefreshData();
 
