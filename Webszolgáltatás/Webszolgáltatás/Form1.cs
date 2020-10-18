@@ -24,7 +24,6 @@ namespace Webszolgáltatás
         {
             InitializeComponent();
 
-
             RefreshData();
 
             comboBox1.DataSource = Currencies;
