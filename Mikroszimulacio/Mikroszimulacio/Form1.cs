@@ -56,7 +56,7 @@ namespace Mikroszimulacio
 
             double pDeath = (from x in DeathProbabilities
                              where x.Gender == person.Gender && x.Age == age
-                             select x.P).FirstOrDefault();
+                             select x.DeathP).FirstOrDefault();
 
             if (rng.NextDouble() <= pDeath)
             {
@@ -67,7 +67,7 @@ namespace Mikroszimulacio
             {
                 double pBirth = (from x in BirthProbabilities
                                  where x.Age == age
-                                 select x.P).FirstOrDefault();
+                                 select x.BirthP).FirstOrDefault();
 
                 if (rng.NextDouble()<=pBirth)
                 {
