@@ -21,6 +21,9 @@ namespace Mikroszimulacio
 
         Random rng = new Random(1234);
 
+        List<Person> male = new List<Person>();
+        List<Person> female = new List<Person>();
+
         public Form1()
         {
             InitializeComponent();
@@ -29,7 +32,11 @@ namespace Mikroszimulacio
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
 
-            for (int year = 2005; year <= 2024 ; year++)
+        }
+
+        private void Simulation()
+        {
+            for (int year = 2005; year <= 2024; year++)
             {
                 for (int i = 0; i < Population.Count; i++)
                 {
@@ -78,6 +85,9 @@ namespace Mikroszimulacio
 
                 }
             }
+
+            if (person.IsAlive && person.Gender == Gender.Male) male.Add(person);
+            if (person.IsAlive && person.Gender == Gender.Female) female.Add(person);
 
 
         }
@@ -128,6 +138,34 @@ namespace Mikroszimulacio
             }
 
             return deathProbabilities;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            male.Clear();
+            female.Clear();
+            richTextBox1.Clear();
+
+            Simulation();
+
+            DisplayResults();
+        }
+
+        private void DisplayResults()
+        {
+            for (int i = 2006; i <= 2024; i++)
+            {
+                richTextBox1.Text += "Szimulációs év: " + i + "\n" + "\t" + "Fiúk: " + male.Count() + "\n" + "\t" + "Lányok: " + female.Count() + "\n" + "\n";
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog()==DialogResult.OK)
+            {
+                textBox1.Text = ofd.FileName;
+            }
         }
     }
 }
