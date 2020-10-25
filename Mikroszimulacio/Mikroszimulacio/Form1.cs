@@ -70,7 +70,7 @@ namespace Mikroszimulacio
                 while(!sr.EndOfStream)
                 {
                     var line = sr.ReadLine().Split(';');
-                    deathProbabilities.Add(new DeathProbability() { Age = int.Parse(line[0]), Gender = (Gender)Enum.Parse(typeof(Gender), line[1]), DeathP = double.Parse(line[2]) });
+                    deathProbabilities.Add(new DeathProbability() { Gender = (Gender)Enum.Parse(typeof(Gender), line[0]), Age = int.Parse(line[1]), DeathP = double.Parse(line[2]) });
                 }
             }
 
