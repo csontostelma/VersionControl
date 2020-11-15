@@ -81,5 +81,19 @@ namespace Fejlesztesi_mintak
         {
             Factory = new BallFactory();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            button3.BackColor = Color.Fuchsia;
+
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+
+            colorPicker.Color = button.BackColor;
+
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+                return;
+            button.BackColor = colorPicker.Color;
+        }
     }
 }
