@@ -43,6 +43,8 @@ namespace Fejlesztesi_mintak
         {
             InitializeComponent();
             Factory = new BallFactory();
+
+            button3.BackColor = Color.Fuchsia;
         }
 
         private void createTimer_Tick(object sender, EventArgs e)
@@ -79,12 +81,15 @@ namespace Fejlesztesi_mintak
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Factory = new BallFactory();
+            Factory = new BallFactory
+            {
+                BallColor = button3.BackColor
+            };
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            button3.BackColor = Color.Fuchsia;
+           
 
             var button = (Button)sender;
             var colorPicker = new ColorDialog();
