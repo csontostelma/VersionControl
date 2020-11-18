@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UnitTestExample.Controllers;
 
@@ -35,9 +36,18 @@ namespace UnitTestExample.Test
         ]
         public void TestValidatePassword(string password, bool expectedResult)
         {
+            var accountController = new AccountController();
 
+            var actualResult = accountController.ValidatePassword(password);
+
+            Assert.AreEqual(expectedResult, actualResult);
         }
+
         
-        
+        //Regex regex = new Regex("(^[a-zA-Z0-9] {8,}$)");
+       
+
+     
+
     }
 }
