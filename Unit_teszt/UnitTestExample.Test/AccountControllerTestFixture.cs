@@ -43,11 +43,26 @@ namespace UnitTestExample.Test
             Assert.AreEqual(expectedResult, actualResult);
         }
 
-        
+
         //Regex regex = new Regex("(^[a-zA-Z0-9] {8,}$)");
-       
 
-     
+        [
+            Test,
+            TestCase("irf@uni-corvinus.hu", "Abcd1234"),
+            TestCase("irf@uni-corvinus.hu", "Abcd1234567")
+        ]
+        public void TestRegisterHappyPath(string email, string password)
+        {
+            var accountController = new AccountController();
 
-    }
+            var actualResult = accountController.Register(email, password);
+
+            Assert.AreEqual(email, actualResult.Email);
+            Assert.AreEqual(password, actualResult.Password);
+            Assert.AreEqual(Guid.Empty, actualResult.ID);
+        }
+
+
+
+}
 }
