@@ -32,7 +32,7 @@ namespace Evolucios_algoritmus
             //gc.AddPlayer();
             //gc.Start(true);
 
-            gc.GameOver += Gc_GameOver;
+            gc.GameOver+= Gc_GameOver;
 
             for (int i = 0; i < populationSize; i++)
             {
@@ -46,6 +46,8 @@ namespace Evolucios_algoritmus
 
         }
 
+        Brain winnerBrain = null;
+
         private void Gc_GameOver(object sender)
         {
             generation++;
@@ -58,6 +60,16 @@ namespace Evolucios_algoritmus
                              orderby p.GetFitness() descending
                              select p;
             var topPerformers = playerList.Take(populationSize / 2).ToList();
+
+            var winners = from p in topPerformers
+                          where p.IsWinner
+                          select p;
+            if (winners.Count() > 0)
+            {
+                winnerBrain = winners.FirstOrDefault().Brain.Clone();
+                gc.GameOver -= Gc_GameOver;
+                return;
+            }
 
             gc.ResetCurrentLevel();
             foreach (var p in topPerformers)
